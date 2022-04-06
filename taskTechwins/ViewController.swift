@@ -23,7 +23,9 @@ class ViewController: UIViewController {
         setUI()
         // Do any additional setup after loading the view.
     }
-
+    
+    //MARK:- For Updating UI
+    
     func setUI() {
         let txtArr = [txtFirstName,txtEmail,txtUserName,txtPassword]
         for txtField in txtArr {

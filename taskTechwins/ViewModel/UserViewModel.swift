@@ -13,6 +13,8 @@ class UserViewModel {
     //MARK:- Variables
     weak var vc: ViewController?
     
+    //MARK:- Valiadate TextFields
+    
     func areAllFieldsValid() -> Bool {
         guard ((vc?.txtFirstName.text?.isEmpty) != nil) && vc?.txtFirstName.text != "" else {
             showAlert(title: "First Name", message: "First Name Can't Be Empty")
@@ -34,17 +36,23 @@ class UserViewModel {
         return true
     }
     
+    //MARK:- Validate Email
+    
     func validate(email: String) -> Bool {
         let REGEX: String
         REGEX = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
         return NSPredicate(format: "SELF MATCHES %@", REGEX).evaluate(with: email)
     }
     
+    //MARK:- Show Alert
+    
     func showAlert(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
      vc?.present(alert, animated: true, completion: nil)
     }
+    
+    //MARK:- Api Integration
     
     func hitLoginApi(parameters:[String:String], completionHandler: @escaping (UserModel?, Bool) -> Swift.Void) {
 
